@@ -1,0 +1,15 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: example-mnist-predictor
+  annotations:
+    serving.kserve.io/deploymentMode: ModelMesh
+    create-route: "True"
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: sklearn
+      storage:
+        key: s3storage
+        path: mnist-svm.joblib
