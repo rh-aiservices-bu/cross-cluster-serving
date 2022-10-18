@@ -1,7 +1,7 @@
 apiVersion: serving.kserve.io/v1beta1
 kind: InferenceService
 metadata:
-  name: example-mnist-predictor
+  name: mnist-predictor
   namespace: modelmesh-testing
   annotations:
     serving.kserve.io/deploymentMode: ModelMesh
