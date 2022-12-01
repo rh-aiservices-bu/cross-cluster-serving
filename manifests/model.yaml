@@ -1,8 +1,8 @@
 apiVersion: serving.kserve.io/v1beta1
 kind: InferenceService
 metadata:
-  name: mnist-predictor
-  namespace: modelmesh-testing
+  name: my-model
+  namespace: my-project
   annotations:
     serving.kserve.io/deploymentMode: ModelMesh
     create-route: "True"
@@ -11,7 +11,10 @@ spec:
   predictor:
     model:
       modelFormat:
-        name: sklearn
+        name: tensorflow
+      runtime: triton-2.x
       storage:
-        key: s3storage
-        path: mnist-svm.joblib
+        key: s3secret
+        path: tf_model/my_model
+        parameters:
+            bucket: models-kserve
