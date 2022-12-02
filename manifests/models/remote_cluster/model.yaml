@@ -1,0 +1,20 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: my-model
+  namespace: my-project
+  annotations:
+    serving.kserve.io/deploymentMode: ModelMesh
+    create-route: "True"
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  predictor:
+    model:
+      modelFormat:
+        name: tensorflow
+      runtime: triton-2.x
+      storage:
+        key: s3storage
+        path: tf_model/my_model
+        parameters:
+            bucket: models-kserve
