@@ -14,7 +14,7 @@ spec:
         name: tensorflow
       runtime: triton-2.x
       storage:
-        key: s3secret
+        key: s3storage
         path: tf_model/my_model
         parameters:
             bucket: models-kserve
